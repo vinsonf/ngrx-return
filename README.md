@@ -35,3 +35,5 @@ ng add @ngrx/schematics@latest --defaultCollection true
 ```
 npm install @ngrx/{store,effects,entity,store-devtools} --save
 ```
+## step 3
+ng generate store AppState --root --module app.module.ts --state-path store --state-interface AppState
