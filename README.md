@@ -36,4 +36,27 @@ ng add @ngrx/schematics@latest --defaultCollection true
 npm install @ngrx/{store,effects,entity,store-devtools} --save
 ```
 ## step 3
+```
 ng generate store AppState --root --module app.module.ts --state-path store --state-interface AppState
+```
+## step 4
+```
+ng g action store/users --group --api --flat false --skip-tests --prefix load --creators true
+```
+## step 5
+```
+ng g ef store/user --group --api --flat false --module app.module.ts --root --skip-tests --creators true
+```
+## step 6
+add to effect above constructor
+```
+  loadUsers$ = createEffect(() => this.actions$.pipe(
+    ofType('[Users Page] Load Users'),
+    mergeMap(() => this.usersService.getAll()
+      .pipe(
+        map(users => ({ type: '[Users API] Users Loaded Success', payload: users })),
+        catchError(() => EMPTY)
+      ))
+    )
+  );
+```
