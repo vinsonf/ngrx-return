@@ -13,7 +13,7 @@ export class UserEffects {
     ofType('[User] Load Users'),
     mergeMap(() => this.usersService.getAll()
       .pipe(
-        map(users => ({ type: '[User] Load Users Success', payload: users })),
+        map(users => ({ type: '[User] Load Users Success', data: users })),
         catchError(() => EMPTY)
       ))
     )
