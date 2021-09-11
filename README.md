@@ -36,4 +36,13 @@ ng add @ngrx/schematics@latest --defaultCollection true
 npm install @ngrx/{store,effects,entity,store-devtools} --save
 ```
 ## step 3
+```
 ng generate store AppState --root --module app.module.ts --state-path store --state-interface AppState
+```
+
+## step 4 
+```
+ng g ef store/users --group --api --flat false --module app.module.ts --root --skip-tests --creators true
+```
+the path in app module does not generate correctly
+
